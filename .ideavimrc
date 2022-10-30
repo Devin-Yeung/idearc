@@ -69,7 +69,8 @@ command Format action ReformatCode
 command Fzf action FindInPath
 
 if &ide =~? 'DataSpell'
-    nmap <Leader>rc :action ActivateR_ConsoleToolWindow<CR> "toggle R console
+    "toggle R console
+    nmap <Leader>rc :action ActivateR_ConsoleToolWindow<CR>
 endif
 
 "which key plugins
