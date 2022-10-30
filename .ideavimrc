@@ -1,0 +1,76 @@
+" Quit insert mode
+inoremap jj <Esc>
+inoremap jk <Esc>
+inoremap kk <Esc>
+
+"better highlight search
+set incsearch
+
+
+"display line number in relative way
+set relativenumber
+
+"short documentation
+sethandler <S-K> a:ide
+
+
+"ace jump
+"nmap <leader><leader>w :action AceAction<CR>
+"nmap <leader><leader>l :action AceLineAction<CR>
+"nmap <leader><leader>t :action AceTargetAction<CR>
+
+"NerdTree
+set NERDTree
+nmap <Space>e :NERDTreeFocus<CR>
+
+"Surround
+set surround
+
+"vim-liked option
+"nmap <C-w>w :action NextSplitter<CR>
+nmap <C-p> :action NextSplitter<CR>
+nmap <leader>qf :action ShowIntentionActions<CR>
+nmap <leader>t :action ActivateTerminalToolWindow<CR>
+nmap L :action NextTab<CR>
+nmap H :action PreviousTab<CR>
+
+"easy-motion
+set easymotion
+nmap <Leader><Leader>w <Plug>(easymotion-w)
+nmap <Leader><Leader>W <Plug>(easymotion-W)
+nmap <Leader><Leader>b <Plug>(easymotion-b)
+nmap <Leader><Leader>B <Plug>(easymotion-B)
+nmap <Leader><Leader>f <Plug>(easymotion-f)
+nmap <Leader><Leader>F <Plug>(easymotion-F)
+
+nmap <Space><Space>w <Plug>(easymotion-w)
+nmap <Space><Space>W <Plug>(easymotion-W)
+nmap <Space><Space>b <Plug>(easymotion-b)
+nmap <Space><Space>B <Plug>(easymotion-B)
+nmap <Space><Space>f <Plug>(easymotion-f)
+nmap <Space><Space>F <Plug>(easymotion-F)
+
+"multi-cursors
+set multiple-cursors
+nmap <C-n> <Plug>NextOccurrence
+vmap <C-n> <Plug>NextOccurrence
+nmap <C-N> <Plug>NextWholeOccurrence
+vmap <C-N> <Plug>NextWholeOccurrence
+nmap <Leader><Leader>ao <Plug>AllOccurrences
+nmap <Leader><Leader>awo <Plug>AllWholeOccurrences
+
+nmap <Leader>r :action Run<CR>
+nmap <S-x> <Action>(CloseEditor) ":action FocusEditor<CR>
+nmap <Leader><Leader>rb :action Vcs.RollbackChangedLines<CR>
+nmap <Leader><Leader>df :action Compare.SameVersion<CR>
+nmap <Leader><Leader>hs :action Vcs.ShowHistoryForBlock<CR>
+
+command Format action ReformatCode
+command Fzf action FindInPath
+
+if &ide =~? 'DataSpell'
+    nmap <Leader>rc :action ActivateR_ConsoleToolWindow<CR> "toggle R console
+endif
+
+"which key plugins
+"set which-key
