@@ -3,6 +3,11 @@ inoremap jj <Esc>
 inoremap jk <Esc>
 inoremap kk <Esc>
 
+" timeout duration for a mapped key sequence
+" set timeoutlen=500
+" tell idea vim how to identify <Leader>f and <Leader>fm
+set timeoutlen=200
+
 "better highlight search
 set incsearch
 
@@ -30,7 +35,10 @@ set surround
 "nmap <C-w>w :action NextSplitter<CR>
 nmap <C-p> :action NextSplitter<CR>
 nmap <leader>qf :action ShowIntentionActions<CR>
+nmap <leader>f :action ShowErrorDescription<CR>
 nmap <leader>t :action ActivateTerminalToolWindow<CR>
+nmap <leader>e :action GotoFile<CR>
+nmap <leader><space> :action GotoSymbol<CR>
 nmap L :action NextTab<CR>
 nmap H :action PreviousTab<CR>
 
@@ -61,17 +69,38 @@ nmap <Leader><Leader>awo <Plug>AllWholeOccurrences
 
 nmap <Leader>r :action Run<CR>
 nmap <S-x> <Action>(CloseEditor) ":action FocusEditor<CR>
+nmap <Leader><Leader>br :action ToggleLineBreakpoint<CR>
+" Hide the terminal
+nmap <Leader>h :action HideActiveWindow<CR>
+
+"VCS actions
 nmap <Leader><Leader>rb :action Vcs.RollbackChangedLines<CR>
 nmap <Leader><Leader>df :action Compare.SameVersion<CR>
 nmap <Leader><Leader>hs :action Vcs.ShowHistoryForBlock<CR>
+nmap <Leader><Leader>rn :action RenameElement<CR>
 
-command Format action ReformatCode
+" Code Format
+nmap <Leader>fm :action ReformatCode<CR>
+
+command Fmt action ReformatCode
 command Fzf action FindInPath
 
 if &ide =~? 'DataSpell'
-    "toggle R console
+    " toggle R console
     nmap <Leader>rc :action ActivateR_ConsoleToolWindow<CR>
+    " restart R console
+    nmap <Leader>rs :action org.jetbrains.r.console.RConsoleView.RestartRAction<CR>
+    " Convert Cell Type
+    nmap <Leader>cc :action JupyterConvertCellActions<CR>
+    " Focus in Cell (DataSpell is buggy now)
+    nmap <Enter> :action JupyterTurnEditModeOnAction<CR>v<ESC>
 endif
+
+if &ide =~? 'PyCharm Professional Edition'
+    " Focus in Cell (Pycharm is buggy now)
+    nmap <Leader>c :action ActivatePythonConsoleToolWindow<CR>
+endif
+
 
 "which key plugins
 "set which-key
